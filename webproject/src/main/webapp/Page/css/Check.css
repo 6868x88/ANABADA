@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.check_title {
+	color: rgb(15, 117, 232);
+}
+
+.check_error {
+	color: rgb(189, 16, 16);
+}
+
+.error {
+	color: red;
+}
+
+.btnSignUp {
+	margin-top: 2vw;
+	background-color: #b9D8E0;
+	border: 2px solid #b9D8E0;
+	color: #005f85;
+	font-weight: bolder;
+}
+
+.input_body {
+	width: 15rem;
+	height: 2rem;
+	font-size: 15px;
+	border: 0;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(225, 233, 235);
+	color: rgb(3, 3, 49);
+}

@@ -1,0 +1,217 @@
+@charset "UTF-8";
+
+hr{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+/*판매 섹션 전체 마진*/
+.sale {
+    margin: 5% 30% 10% 30%;
+    font-size: 1rem;
+}
+
+/*빨강*/
+.RequiredInput {
+    color: rgb(179, 13, 13);
+}
+
+.sale h2 {
+    font-size: 2vw;
+    padding-bottom: 1.7rem;
+}
+
+
+input {
+    /* width: 50%; */
+    height: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.placeholder {
+    font-size: 1.5vw
+}
+
+label {
+    padding-right: 1rem;
+}
+
+/*사진 추가*/
+
+.img-preview-big {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.img-preview-big img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-preview-operate {
+    height: 4vw;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+}
+
+.img-preview-small {
+    display: inline-block;
+    margin-right: 5px;
+    height: 70px;
+    width: 70px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-preview-small img {
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    object-fit: cover;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.img-preview-operate button {
+    padding: 0px;
+    margin: 0px;
+    background: transparent;
+    border: none;
+    height: 70px;
+    width: 70px;
+}
+
+.img-preview-operate button img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.img-preview-operate::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+}
+
+.img-preview-operate::-webkit-scrollbar {
+    height: 6px;
+    background-color: #F5F5F5;
+}
+
+.img-preview-operate::-webkit-scrollbar-thumb {
+    background-color: #2F4356;
+}
+
+.img-delete {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.img-delete img {
+    height: 70px;
+    width: 70px;
+}
+
+.img-small-active {
+    outline: 2px solid;
+}
+
+.img-small-selected {
+    outline: 2px solid;
+}
+
+.img-preview-big {
+    max-width: 250px !important;
+}
+
+
+.img-upload-plugin {
+    max-width: 250px;
+}
+
+/*사진 업로드 주의 설명*/
+.pic_explane {
+    font-size: 0.8vw;
+    color: rgb(0, 140, 255);
+    line-height: 150%;
+}
+
+
+.sale input {
+    font-size:1.2rem;
+}
+
+/*상품 상태 선택*/
+.sell_select_state input {
+    font-size: 0.5vw;
+    width: 2%;
+    height: 2%;
+}
+
+
+.sell_select_state label {color: rgb(37, 50, 75);}
+.sell_select_state label:checked {color: rgb(15, 35, 74);}
+input[type="radio"]:checked + label {color: rgb(20, 115, 211);}
+
+/*가격*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*카테고리 선택*/
+.sell_category{
+   width: 10rem;
+   height: 2rem;
+   font-size: 1rem;
+  text-align: center;
+  
+}
+
+/*상품설명*/
+.sell_description{
+height: 10rem;
+width: 80%;
+overflow:auto;
+text-align:left;
+padding-top:5;
+font-size: 1rem;
+line-height: 125%;
+}
+
+.formfield * {
+    vertical-align: middle;
+  }
+
+  /*제출버튼*/
+  .submitBtn{
+    color: #ffffff;
+    background-color:rgb(113, 150, 189);
+    width: 6.5vw;
+    height: 2.5vw;
+    text-align: center;
+    float: right;
+    border-radius: 10px;
+  }
+
+  .submitBtn:hover{
+    color: #ffffff;
+    background-color:rgb(15, 50, 80);
+  }

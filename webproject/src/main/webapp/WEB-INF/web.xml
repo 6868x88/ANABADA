@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	id="WebApp_ID" version="4.0">
+	<display-name>webProject</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+	</welcome-file-list>
+
+	<session-config>
+		<session-timeout>100</session-timeout>
+	</session-config>
+
+
+	<context-param>
+		<param-name>OracleId</param-name>
+		<param-value>c##green</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>OraclePwd</param-name>
+		<param-value>green1234</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>SetCharEncoding</filter-name>
+		<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SetCharEncoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<context-param>
+		<param-name>POSTS_PER_PAGE</param-name>
+		<param-value>16</param-value>
+	</context-param>
+	<context-param>
+		<param-name>PAGES_PER_BLOCK</param-name>
+		<param-value>5</param-value>
+	</context-param>
+
+	<servlet>
+		<servlet-name>BoardList</servlet-name>
+		<servlet-class>board.notice.ListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BoardList</servlet-name>
+		<url-pattern>/Page/list.do</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>FreeBoardList</servlet-name>
+		<servlet-class>board.free.FreeBoardListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreeBoardList</servlet-name>
+		<url-pattern>/Page/freeListPage.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FaqList</servlet-name>
+		<servlet-class>board.faq.FaqListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FaqList</servlet-name>
+		<url-pattern>/Page/faqListPage.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>NoticeView</servlet-name>
+		<servlet-class>board.notice.NoticeBoardViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoticeView</servlet-name>
+		<url-pattern>/Page/NoticeView.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FreeBoardView</servlet-name>
+		<servlet-class>board.free.FreeBoardViewController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreeBoardView</servlet-name>
+		<url-pattern>/Page/FreeBoardView.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>FreeBoardWrite</servlet-name>
+		<servlet-class>board.free.FreeBoardWriteController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FreeBoardWrite</servlet-name>
+		<url-pattern>/Page/FreeBoardWrite.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ExchangeListController</servlet-name>
+		<servlet-class>board.exchange.ExchangeListController</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ExchangeListController</servlet-name>
+		<url-pattern>/Page/exchangeListPage.do</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>NoticeBoardWrite</servlet-name>
+		<servlet-class>board.notice.NoticeBoardWriteController</servlet-class>
+
+	</servlet>
+
+
+	<servlet-mapping>
+		<servlet-name>NoticeBoardWrite</servlet-name>
+		<url-pattern>/Page/NoticeBoardWrite.do</url-pattern>
+	</servlet-mapping>
+
+
+
+</web-app>
+	
+	

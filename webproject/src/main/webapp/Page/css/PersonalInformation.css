@@ -1,0 +1,111 @@
+:root {
+    --main-color: #c3d8dc;
+    --header-color: #9ed6ef;
+    --dark-main-color: #2B5566;
+    --hoverMenu-color:#979c9f;
+    --text-bright-color: #fff;
+    --icon-color: #fff;
+    --icon-bk-color: #ddd;
+    --large-width: 1000px;
+}
+
+
+.Personalinfo{
+ text-align: center;
+ margin-left: auto;
+margin-right: auto;
+width: 70%;
+}
+
+.personalA-title{
+padding-top: 4vw;
+font-size: 2vw;
+}
+.personal-lineA{
+    width: 50%;
+
+}
+.personalB-subtitle{
+ padding-top: 7vw;
+ padding-bottom: 2vw;
+text-align: left;
+font-size: 1.5vw;
+width: 70%;
+
+}
+
+.PersonalC-table{
+    border-top: 1px;
+margin-left: auto;
+margin-right: auto;
+width: 70%;
+font-size: 1vw;
+}
+
+.PersonalC-table th, td{
+border-bottom: 1px solid #444444;
+padding: 10px;
+}
+
+.PersonalC-table th{
+    color: #868080;
+    background-color: #F6F6F6;
+}
+
+.PersonalC-table td{
+text-align: left;
+padding-left: 2rem;
+}
+
+.personal-lineB{
+    width: 80%;
+}
+
+/*탈퇴 모달창*/
+.SignOutModal{
+background-color: rgb(255, 255, 255);
+text-align: center;
+margin: 10% 40%;
+height: 20vw;
+width: 20vw;
+line-height: 250%;
+display: block;
+font-size: 1.5vw;
+}
+
+.SignOutBtn{
+    font-size: 1.5vw;
+}
+
+.SignOutModal .confirmSignOutA{
+    padding-top: 20%;
+    color: rgb(154, 39, 39);
+}
+
+.SignoutBtn{
+text-align: center;
+background-color: var(--dark-main-color);
+border: none;
+outline: none;
+color: #fff;
+}
+
+.confirmSignOutB{
+font-size: smaller;
+}
+
+.updateInfo{
+  margin-top: 2rem;
+   background-color:var(--header-color);
+    color: #fff;
+    width: 8vw;
+    font-size: 1vw;
+    padding: 0.5rem;
+    display: inline-block;
+}
+
+.confirmSignOutA a{
+	list-style: none;
+    color: #fff;
+    text-decoration:none;
+} 
