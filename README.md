@@ -12,7 +12,7 @@ Java, Javascript, JSP, HTML, CSS를 이용하여 중고 거래 사이트를 제�
 
 ### 💻 프로그램
 - 개요 
-	- Java,Javascript,HTML,CSS,JSP를 이용한 <b>웹 사이트</b> 
+	- Java, Javascript, HTML, CSS, JSP를 이용한 <b>웹 사이트</b> 
 - 개발기간 
 	- 2022/09/13~2022/10/26
 - 개발목적
@@ -26,5 +26,6 @@ Java, Javascript, JSP, HTML, CSS를 이용하여 중고 거래 사이트를 제�
 ### ⚙️ 개발환경
 - java jdk-8u331
 - oracle XE-21C
+- Apache Tomcat 9.0 (Server)
 
 ***
