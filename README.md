@@ -1,7 +1,6 @@
-# ANABADA
 # Web Team Project
 
-## 🌱환경을 생각하는 중고 거래 사이트
+## 🌱ANABADA_환경을 생각하는 중고 거래 사이트
 <br>
 
 ```
