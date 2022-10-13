@@ -1,4 +1,4 @@
-# Web Team Project
+# Web Team Project (진행중)
 
 ## 🌱ANABADA_환경을 생각하는 중고 거래 사이트
 <br>
