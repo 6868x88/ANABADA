@@ -1,6 +1,8 @@
 # Web Team Project (진행중)
 
 ## 🌱ANABADA_환경을 생각하는 중고 거래 사이트
+
+![다운로드](https://user-images.githubusercontent.com/107034832/195539679-375a7714-cc97-488b-8734-9edc44f9d86a.png)
 <br>
 
 ```
