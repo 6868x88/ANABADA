@@ -31,3 +31,11 @@ Java, Javascript, JSP, HTML, CSS를 이용하여 중고 거래 사이트를 제�
 - Apache Tomcat 9.0 (Server)
 
 ***
+
+### ⛓️팀원 구성
+- 강지은 https://github.com/6868x88
+(거래, 교환게시판, 후원 페이지, 쪽지 기능)
+- 송유진 https://github.com/IrisNamu
+(헤더 푸터, 회원 정보 관리 및 로그인, 회사 소개페이지,신고 담당)
+- 장아영 https://github.com/youngee2
+(FAQ, 자유게시판, 공지사항, 개발자 소개 페이지)
