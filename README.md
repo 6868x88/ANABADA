@@ -2,7 +2,7 @@
 
 ## 🌱ANABADA_환경을 생각하는 중고 거래 사이트
 
-<img src="https://user-images.githubusercontent.com/107034832/196367139-f5013e65-a0b6-4c8f-a709-bdcea02e9a02.png" width="80%"/>
+<img src = "https://user-images.githubusercontent.com/107034832/196367905-b1ac5599-31d9-4d8e-9f01-7f98a410f9d0.png" width="90%" />
 
 <br>
 
