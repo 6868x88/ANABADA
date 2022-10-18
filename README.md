@@ -5,6 +5,7 @@
 <img src = "https://user-images.githubusercontent.com/107034832/196367905-b1ac5599-31d9-4d8e-9f01-7f98a410f9d0.png" width="90%" />
 
 <br>
+<br>
 
 ```
 Java, Javascript, JSP, HTML, CSS를 이용하여 중고 거래 사이트를 제작하였습니다.
