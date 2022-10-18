@@ -25,7 +25,7 @@
 
 <style>
 .viewAllMember {
-	padding: 10%;
+	padding: 5% 10% 5% 10%;
 }
 
 table {
@@ -35,10 +35,14 @@ table {
 
 th, td {
 	border: 1px solid #444444;
+	height: 2rem;
+	text-align: center;
+	font-size: 1.1rem
 }
 
 tr:hover {
-	background-color: lightyellow;
+	background-color: #b6adad;
+	color: black;
 }
 
 caption {
@@ -54,13 +58,67 @@ caption {
 .form_btn button {
 	margin-left: 0.5rem;
 }
+
+.title_user {
+	background: #2980b9;
+	color: #ffffff;
+}
+
+.title_user th {
+	height: 3.7rem;
+}
+
+.title_report {
+	background: #ea6153;
+	color: #ffffff;
+	height: 6px;
+}
+
+.title_report th {
+	height: 3.7rem;
+}
+
+.total {
+	font-size: 1.5rem;
+}
+
+#clickMember, #clickReport {
+	padding-top: 2.5rem;
+	padding-bottom: 2.5rem;
+	font-size: 1.5rem;
+}
+
+button {
+	font-size: 1.3rem;
+	background-color: #b9D8E0;
+	color: #2B5566;
+	border: 2px solid #b9D8E0;
+}
+
+button:hover {
+	color: #2B5566;
+	background-color: #b9D8E0;
+	color: #fffff;
+}
+
+.form-control, input {
+	height: 1.5rem;
+}
 </style>
 </head>
-<body>
+<body style="margin: 0;">
+	<%
+	request.setCharacterEncoding("UTF-8");
+	String user_id = (String) session.getAttribute("UserId");
+	System.out.print(user_id + "확인");
 
+	if (user_id == null) {
+		out.println("<script>alert('로그인 후 사용해주세요.'); location.href='Login.jsp';</script>");
+	}
+	%>
 
 	<section class="viewAllMember">
-
+		<h1 style="text-align: center; font-size: 2vw;">관리자 회원 관리</h1>
 		<hr>
 		<h2>전체 회원 테이블</h2>
 		<form method="get">
@@ -79,11 +137,11 @@ caption {
 			</tr>
 		</form>
 
-		<div style="width: 100%; height: 300px; overflow: auto">
+		<div style="width: 100%; height: 500px; overflow: auto">
 			<table id="memberTable">
 				<caption class="total">총 회원 수: ${fn:length(memberList)} 명</caption>
 				<p>* 상태 1은 정지된 회원, 0은 정상회원을 뜻합니다.</p>
-				<tr>
+				<tr class="title_user">
 					<th>상태</th>
 					<th>아이디</th>
 					<th>닉네임</th>
@@ -111,7 +169,7 @@ caption {
 										<td><c:out value="${row.user_passwd}" /></td>
 										<td><c:out value="${row.email}" /></td>
 										<td><c:out value="${row.phone_num}" /></td>
-										<td><c:out value="${row.reportCount}" /></td>
+										<td><c:out value="${row.countReport }" /></td>
 									</tr>
 								</c:when>
 								<c:otherwise>
@@ -123,7 +181,7 @@ caption {
 										<td><c:out value="${row.user_passwd}" /></td>
 										<td><c:out value="${row.email}" /></td>
 										<td><c:out value="${row.phone_num}" /></td>
-										<td><c:out value="${row.reportCount}" /></td>
+										<td><c:out value="${row.countReport}" /></td>
 									</tr>
 								</c:otherwise>
 							</c:choose>
@@ -160,7 +218,7 @@ caption {
 		<form method="get">
 			<tr>
 				<td><select class="form-control" name="reportSearchField">
-
+						<option value="boardName">신고 게시판</option>
 						<option value="reportedNickname">피신고자 닉네임</option>
 						<option value="reporterNickname">신고자 닉네임</option>
 						<option value="reason">신고 사유</option>
@@ -169,18 +227,20 @@ caption {
 				<td><input type="text" class="form-control"
 					placeholder="검색어 입력" name="reportSearchWord" maxlength="100"></td>
 				<td><button type="submit">검색</button></td>
+					<p>* 게시판은 교환, 거래, 판매 게시판으로 나누어져 있습니다.</p>
 			</tr>
 		</form>
 
 		<div style="width: 100%; height: 300px; overflow: auto">
 			<table id="reportTable">
 				<caption class="total">총 신고 수: ${fn:length(reportList)} 회</caption>
-				<tr>
+				<tr class="title_report">
+					<th>신고 위치</th>
 					<th>피신고자</th>
 					<th>신고자</th>
-					<th>신고 사유</th>
+					<th style="width:50%;">신고 사유</th>
 					<th>신고 날짜</th>
-					<th>받은 신고 수</th>
+					<th>누적 신고 번호</th>
 
 				</tr>
 				<c:choose>
@@ -192,11 +252,12 @@ caption {
 					<c:otherwise>
 						<c:forEach items="${reportList}" var="row" varStatus="loop">
 							<tr>
+								<td><c:out value="${row.boardName }" /></td>
 								<td><c:out value="${row.reportedNickname }" /></td>
 								<td><c:out value="${row.reporterNickname }" /></td>
 								<td><c:out value="${row.reason }" /></td>
 								<td><c:out value="${row.reportDate }" /></td>
-								<td><c:out value="${row.reportCount}" /></td>
+								<td><c:out value="${row.countReport }" /></td>
 							</tr>
 
 						</c:forEach>
@@ -210,7 +271,8 @@ caption {
 			action="../Page/deleteReport.do" onsubmit="return check6()">
 			<input type="hidden" name=reportedNickname id="reportedNickname"
 				value="" /> <input type="hidden" name=reporterNickname
-				id="reporterNickname" value="" />
+				id="reporterNickname" value="" /> <input type="hidden" name=reason
+				id="reason" value="" />
 			<button type="submit" id='btn6'>신고내역 삭제하기</button>
 		</form>
 		<hr>
@@ -241,6 +303,7 @@ caption {
 				var nickname = td.eq(3).text();
 				var email = td.eq(5).text();
 				var phone_num = td.eq(6).text();
+				var reportCount = td.eq(7).text();
 
 				if (state == 1) {
 					btn1.style.display = 'none';
@@ -256,7 +319,9 @@ caption {
 						+ "</font>" + ", 닉네임 : <font color='blue'>" + nickname
 						+ "</font>" + ", 이메일 : <font color='blue'>" + email
 						+ "</font>" + ", 전화번호 : <font color='blue'>"
-						+ phone_num + "</font>";
+						+ phone_num + "</font>"
+						+ ", 받은 신고 수: <font color='blue'>" + reportCount
+						+ "</font>";
 
 				$("#clickMember").html(str);
 
@@ -324,27 +389,35 @@ caption {
 								.getElementById("reportedNickname").value;
 						var reporterNickname = document
 								.getElementById("reporterNickname").value;
+						var reason = document.getElementById("reason").value;
 
 						var tr = $(this);
 						var td = tr.children();
 
-						var reportedNickname = td.eq(0).text();
-						var reporterNickname = td.eq(1).text();
-						var reason = td.eq(2).text();
-						var reportDate = td.eq(3).text();
+						var boardName = td.eq(0).text();
+						var reportedNickname = td.eq(1).text();
+						var reporterNickname = td.eq(2).text();
+						var reason = td.eq(3).text();
+						var reportDate = td.eq(4).text();
+						var reportCount = td.eq(5).text();
 
-						str += " *선택한 회원 : 피신고자 : <font color='blue'>"
+						str += " *선택한 회원 : 신고 게시판 : <font color='blue'>"
+								+ boardName + "</font>"
+								+ ", 피신고자 : <font color='blue'>"
 								+ reportedNickname + "</font>"
 								+ ", 신고자 : <font color='blue'>"
 								+ reporterNickname + "</font>"
 								+ ", 신고사유 : <font color='blue'>" + reason
 								+ "</font>" + ", 신고 날짜: <font color='blue'>"
-								+ reportDate + "</font>";
+								+ reportDate + "</font>"
+								+ ", 누적 신고 번호: <font color='blue'>"
+								+ reportCount + "</font>";
 
 						$("#clickReport").html(str);
 
 						document.getElementById("reportedNickname").value = reportedNickname;
 						document.getElementById("reporterNickname").value = reporterNickname;
+						document.getElementById("reason").value = reason;
 					});
 
 	function check6() {

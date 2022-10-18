@@ -76,8 +76,8 @@ function deletePost(){
 
 		<hr style="margin-top: 20%; border: 1px solid #d3d3d3;">
 		<div class="btn_list">
-				<%
-		if(session.getAttribute("UserId").equals("admin")){
+				<%if (session.getAttribute("Nickname")==null){}
+				else if(session.getAttribute("UserId").equals("admin")){
 		%>
 				<button class="list_move_btn" type="button"
 				onclick="location.href='NoticeBoard_edit.jsp?n_num=<%= dto.getN_num() %>';">수정</button>
@@ -86,7 +86,7 @@ function deletePost(){
 		}
 		%>
 			<button class="list_move_btn" type="button"
-				onclick="location.href='../Page/list.do' ">목록</button>
+				onclick="location.href='../Page/list.do'">목록</button>
 			
 		</div>
 

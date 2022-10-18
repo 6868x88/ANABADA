@@ -131,8 +131,8 @@
 					<option value="sell_title">제목</option>
 					<option value="sell_contents">내용</option>
 				</select> <input class="search-text" type="text" name="searchWord"
-					placeholder="키워드를 검색하세요.">
-					<input type="hidden" name="category" value="${map.get("category") }">
+					placeholder="키워드를 검색하세요."> <input type="hidden"
+					name="category" value="${map.get("category") }">
 				<button class="search-btn" type="submit">
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
 						fill="#337a98" class="bi bi-search" viewBox="0 0 16 16">
@@ -147,68 +147,81 @@
 
 	<!--카테고리-->
 	<div style="margin-top: 5%;">
-	<form method="get" >
-		<ul class="category">
-			<li class="li-tradePage category-li">
-				<button type="submit"  name="category" value="7" style="border:none; background-color:rgb(255,255,255,1);">
-					<span> <img src="./img/sprout-tree-svgrepo-com.svg"
-						class="icon"> <br>전체
-				</span>
-				</button>
-			</li>
+		<form method="get">
+			<ul class="category">
+				<li class="li-tradePage category-li">
+					<button type="submit" name="category" value="7"
+						style="border: none; background-color: rgb(255, 255, 255, 1);">
+						<span> <img src="./img/sprout-tree-svgrepo-com.svg"
+							class="icon"> <br>전체
+						</span>
+					</button>
+				</li>
 
-			<li class="li-tradePage category-li">
-				<button type="submit"  name="category" value="0" style="border:none; background-color:rgb(255,255,255,1);">
-					<span> <img src="./img/fassion.png" class="icon"> <br>패션/잡화/뷰티
-				</span>
-			</button></li>
+				<li class="li-tradePage category-li">
+					<button type="submit" name="category" value="0"
+						style="border: none; background-color: rgb(255, 255, 255, 1);">
+						<span> <img src="./img/fassion.png" class="icon"> <br>패션/잡화/뷰티
+						</span>
+					</button>
+				</li>
 
-			<li class="li-tradePage category-li">
-			<button type="submit"  name="category" value="1" style="border:none; background-color:rgb(255,255,255,1);">
-					<span> <img src="./img/tech.png" class="icon"> <br>테크/가전
-				</span>
-			</button></li>
+				<li class="li-tradePage category-li">
+					<button type="submit" name="category" value="1"
+						style="border: none; background-color: rgb(255, 255, 255, 1);">
+						<span> <img src="./img/tech.png" class="icon"> <br>테크/가전
+						</span>
+					</button>
+				</li>
 
-			<li class="li-tradePage category-li">
-			<button type="submit"  name="category" value="2" style="border:none; background-color:rgb(255,255,255,1);">
-					<span> <img src="./img/home.png" class="icon"> <br>홈/리빙
-				</span>
-			</button></li>
+				<li class="li-tradePage category-li">
+					<button type="submit" name="category" value="2"
+						style="border: none; background-color: rgb(255, 255, 255, 1);">
+						<span> <img src="./img/home.png" class="icon"> <br>홈/리빙
+						</span>
+					</button>
+				</li>
 
-			<li class="li-tradePage category-li">
-			<button type="submit"  name="category" value="3" style="border:none; background-color:rgb(255,255,255,1);">
-					<span> <img src="./img/baby.png" class="icon"> <br>베이비/키즈
-				</span>
-			</button></li>
+				<li class="li-tradePage category-li">
+					<button type="submit" name="category" value="3"
+						style="border: none; background-color: rgb(255, 255, 255, 1);">
+						<span> <img src="./img/baby.png" class="icon"> <br>베이비/키즈
+						</span>
+					</button>
+				</li>
 
-			<li class="li-tradePage category-li">
-				<button type="submit"  name="category" value="4" style="border:none; background-color:rgb(255,255,255,1);">
-					<span> <img src="./img/pet.png" class="icon"> <br>반려동물
-				</span>
-			</button></li>
+				<li class="li-tradePage category-li">
+					<button type="submit" name="category" value="4"
+						style="border: none; background-color: rgb(255, 255, 255, 1);">
+						<span> <img src="./img/pet.png" class="icon"> <br>반려동물
+						</span>
+					</button>
+				</li>
 
-			<li class="li-tradePage category-li">
-				<button type="submit"  name="category" value="5" style="border:none; background-color:rgb(255,255,255,1);">
-					<span> <img src="./img/game.png" class="icon"> <br>게임/취미
-				</span>
-			</button></li>
+				<li class="li-tradePage category-li">
+					<button type="submit" name="category" value="5"
+						style="border: none; background-color: rgb(255, 255, 255, 1);">
+						<span> <img src="./img/game.png" class="icon"> <br>게임/취미
+						</span>
+					</button>
+				</li>
 
-			<li class="li-tradePage category-li">
-				<button type="submit"  name="category" value="6" style="border:none; background-color:rgb(255,255,255,1);">
-					<span> <img src="./img/etc.png" class="icon"> <br>기타
-				</span>
-			</button></li>
+				<li class="li-tradePage category-li">
+					<button type="submit" name="category" value="6"
+						style="border: none; background-color: rgb(255, 255, 255, 1);">
+						<span> <img src="./img/etc.png" class="icon"> <br>기타
+						</span>
+					</button>
+				</li>
 
-		</ul>
+			</ul>
 		</form>
 	</div>
 
-
-	<!--게시글 리스트(기능 넣으면 수정예정)-->
-
 	<div class="container-fluid">
-	
-		<h4>${category_word }</h4>
+		<h4>
+			<c:out value='${category_word }' />
+		</h4>
 		<hr>
 		<c:choose>
 			<c:when test="${empty boardList}">
@@ -226,18 +239,24 @@
 								</a>
 								<p class="li-exchange-wish" style="text-align: center;">${list_item.sell_title }</p>
 								<p class="li-exchange-wish" style="text-align: center;">
-								
+
 									<!-- 천 단위 표기(자바스크립트 사용) -->
 									<script>
 										var price = ${list_item.sell_price};
-										
-										if(price == 0 ){
+
+										if (price == 0) {
 											document.write("무료나눔");
-										}else{
-										function priceToString(price) {
-										    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+										} else {
+											function priceToString(price) {
+												return price
+														.toString()
+														.replace(
+																/\B(?=(\d{3})+(?!\d))/g,
+																',');
+											}
+											document.write(priceToString(price)
+													+ "&nbsp;원");
 										}
-										    document.write(priceToString(price)+"&nbsp;원");}
 									</script>
 								</p>
 							</div>
@@ -251,10 +270,10 @@
 		<!-- 하단 -->
 		<hr>
 		<ul>
-					
-			<li><a href="../Page/sellWrite.jsp" title="글쓰기" class="button btnFade btnOrange"
-				style="font-size: 12pt;" id="write">글쓰기</a></li>
-					
+
+			<li><a href="../Page/sellWrite.jsp" title="글쓰기"
+				class="button btnFade btnOrange" style="font-size: 12pt;" id="write">글쓰기</a></li>
+
 			<li>
 				<div style="text-align: center; font-size: 15pt;">${map.pagingImg }</div>
 			</li>
@@ -273,7 +292,7 @@
 	</div>
 
 
-	<%@ include file="./HeaderFooter/Footer.jsp"%>  
+	<%@ include file="./HeaderFooter/Footer.jsp"%>
 </body>
 
 </html>

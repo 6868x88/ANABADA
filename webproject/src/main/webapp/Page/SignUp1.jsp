@@ -56,7 +56,7 @@
 	System.out.print(user_id + "확인");
 
 	if (user_id != null) {
-		out.println("<script>alert('로그아웃 후 사용해주세요.'); location.href='tradeListPage.do';</script>");
+		out.println("<script>alert('로그아웃 후 사용해주세요.');location.href='tradeListPage.do?category=7';</script>");
 	}
 	%>
 <section style="margin:0 15% 15% 15%">

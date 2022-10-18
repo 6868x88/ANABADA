@@ -13,7 +13,7 @@
 <title>UpdatePersonalInfomation</title>
 <link rel="stylesheet" href="./css/PersonalInformation.css">
 <style>
-.user_id {
+.user_id, #nickname {
 	border: none;
 }
 
@@ -30,16 +30,15 @@
 	color: red;
 }
 
-#check_button{
-    background-color: #b9D8E0;
-    border : 2px solid #b9D8E0;
-    color: #2B5566;
+#check_button {
+	background-color: #b9D8E0;
+	border: 2px solid #b9D8E0;
+	color: #2B5566;
 }
-
 </style>
 </head>
 
-<body style="margin:0;">
+<body style="margin: 0;">
 	<section class="Personalinfo">
 		<h1 class="personalA-title">회원정보</h1>
 		<hr class="personal-lineA">
@@ -56,48 +55,53 @@
 		%>
 
 		<table class="PersonalC-table">
+			
 
 			<form name="UpdateInfo" method="post" action="../Page/UpdateInfo.do"
 				onsubmit="return updateCheck()">
 				<tr>
 					<th>이름</th>
 					<td><input type="text" id="namechk" name="name"
-						value="${dto.name}" /><br> <a id="nameError" class="error"></a></td>
+						value="<c:out value='${dto.name}'/>" /><br> <a id="nameError" class="error"></a></td>
 				</tr>
 				<tr>
 					<th>닉네임</th>
 					<td><input type="text" id="nickname" name="nickname"
-						value="${dto.nickname}"
-						placeholder="'별명 중복 검사' 버튼을 눌러 아이디를 입력해주세요." readonly/> <input
-						type="button" id="check_button" value="별명 중복 검사"
-						onclick="nicknameCheck()" /><br> <a id="nicknameError"
-						class="error"></a></td>
+						value="<c:out value='${dto.nickname}'/>" readonly /> <a class="cantFix">*닉네임은
+							수정 불가합니다.</a>
 				</tr>
 				<tr>
 					<th>아이디</th>
 					<td><input type="text" class="user_id" name="user_id"
-						value="${dto.user_id}" readonly="readonly" /> <a class="cantFix">*아이디는
+						value="<c:out value='${dto.user_id}'/>"  readonly="readonly" /> <a class="cantFix">*아이디는
 							수정 불가합니다.</a></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
 					<td><input type="password" id="pwd" name="user_passwd"
-						value="${dto.user_passwd}" required/><br> <a id="pwdError"
-						class="error" ></a></td>
+						value="<c:out value='${dto.user_passwd}'/>" required /><br> <a id="pwdError"
+						class="error"></a></td>
 				</tr>
 				<tr>
 					<th>이메일 주소</th>
 					<td><input type="text" id="email" name="email"
-						value="${dto.email}"/><br> <a id="emailError" class="error"></a></td>
+						value="<c:out value='${dto.email}'/>" /><br> <a id="emailError" class="error"></a></td>
 				</tr>
 				<tr>
 					<th>연락처</th>
 					<td><input type="text" id="phone_num" name="phone_num"
-						value="${dto.phone_num}" /><br> <a id="phoneNumError"
-						class="error"></a></td>
+						value="<c:out value='${dto.phone_num}'/>" maxlength="13" oninput="autoHyphen(this)" /><br>
+						<a id="phoneNumError" class="error"></a></td>
 				</tr>
 		</table>
-		<button id="check_button" type="submit" onclick="updateCheck()">수정하기</button>
+		<script>
+            const autoHyphen = (target) => {
+                target.value = target.value
+                  .replace(/[^0-9]/g, '')
+                 .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
+               }
+            </script>
+		<button id="check_button" type="submit">수정하기</button>
 		</form>
 
 		<hr class="personal-lineB">
@@ -106,15 +110,6 @@
 <%@ include file="./HeaderFooter/Footer.jsp"%>
 </html>
 
-<script>
-	// 가입부분 체크 
-	var openWin;
-	function nicknameCheck() {
-		window.open("NicknameCheckForm.jsp", "idwin",
-				"width=450, height=350, resizable = no, scrollbars = no");
-		window.name = "parentForm";
-	}
-</script>
 
 <script>
 	// 가입부분 체크 
@@ -133,7 +128,7 @@
 		let spe = /[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/;
 
 		let mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-		let pwdOK = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
+		let pwdOK = /^(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,15}$/;
 
 		// 이름확인
 		if (namechk === "") {
@@ -144,14 +139,6 @@
 			return false;
 		} else {
 			document.getElementById("nameError").innerHTML = ""
-		}
-
-		//닉네임
-		if (nickname === "") {
-			document.getElementById("nicknameError").innerHTML = "별명은 필수 정보입니다."
-			return false;
-		} else {
-			document.getElementById("nicknameError").innerHTML = "멋진 별명이네요!"
 		}
 
 		// 비밀번호 확인
@@ -175,17 +162,13 @@
 			document.getElementById("emailError").innerHTML = ""
 		}
 
-		//전화번호
-		if (phone_num === "") {
-			document.getElementById("phoneNumError").innerHTML = "전화번호는 필수 정보입니다."
-			return false;
-		} else if (num.test(phone_num) || id.length < 12) {
-			document.getElementById("phoneNumError").innerHTML = "전화번호는 숫자만 입력해주세요."
-			return false;
-		} else {
-			document.getElementById("phoneNumError").innerHTML = ""
-		}
-
+		  //전화번호
+		   if (phone_num === "") {
+		      document.getElementById("phoneNumError").innerHTML = "전화번호는 필수 정보입니다."
+		      return false;
+		   } else {
+		      document.getElementById("phoneNumError").innerHTML = ""
+		   }
 		
 	}
 	

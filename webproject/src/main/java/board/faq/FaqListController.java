@@ -54,9 +54,7 @@ public class FaqListController extends HttpServlet {
 			category_title = "1";
 		}
 
-
 		map.put("category", category);
-
 
 		List<FaqDTO> FaqLists = dao.selectListPage(map);
 		dao.close();

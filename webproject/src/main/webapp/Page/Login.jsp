@@ -16,8 +16,16 @@
 
 </head>
 
-<body>
+<body style="margin:0;">
+	<%
+		request.setCharacterEncoding("UTF-8");
+		String user_id = (String) session.getAttribute("UserId");
+		System.out.print(user_id + "확인");
 
+		if (user_id != null) {
+			out.println("<script>alert('이미 로그인이 되어있습니다.'); location.href='tradeListPage.do?category=7';</script>");
+		}
+		%>
 	<section style="margin: 5% 35% 5% 35%">
 
 <hr>

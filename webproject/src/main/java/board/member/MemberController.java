@@ -50,13 +50,12 @@ public class MemberController extends HttpServlet {
 		int signUpResult = dao.signUp(dto);
 		dao.close();
 
-		// 성공 or 실패?
 		if (signUpResult == 1) {
 			resp.sendRedirect("SignUp3.jsp");
-			System.out.println("성공");
+			System.out.println("회원가입 성공");
 		} else {
 			resp.sendRedirect("SignUp2.jsp");
-			System.out.println("실패");
+			System.out.println("회원가입 실패");
 		}
 	}
 

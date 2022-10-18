@@ -38,7 +38,7 @@ public class LoginController extends HttpServlet {
 		int report = memberDTO.getReport();
 		dao.close();
 
-		// 정지된 회원
+		// 정지된 회원이면 로그인 불가
 		if (report == 1) {
 			session.invalidate();
 			req.getRequestDispatcher("report.jsp").forward(req, resp);

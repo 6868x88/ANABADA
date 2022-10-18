@@ -13,8 +13,9 @@ public class ReportDAO extends DBConnPool {
 		super();
 	}
 
+	// idx에 해당하는 모든 신고 컬럼 조회
 	public ReportDTO getReportDTO(int idx) {
-		ReportDTO dto = new ReportDTO(); 
+		ReportDTO dto = new ReportDTO();
 		String query = "SELECT * FROM reportTB WHERE idx=?";
 
 		try {
@@ -22,9 +23,7 @@ public class ReportDAO extends DBConnPool {
 			psmt.setInt(1, idx);
 			rs = psmt.executeQuery();
 			System.out.println(query);
-			// 결과 처리
 			if (rs.next()) {
-
 				dto.setIdx(rs.getInt("idx"));
 				dto.setReportedNickname(rs.getString("reportedNickname"));
 				dto.setReporterNickname(rs.getString("reporterNickname"));
@@ -42,15 +41,19 @@ public class ReportDAO extends DBConnPool {
 	public int reportReceived(ReportDTO dto) {
 		int result = 0;
 
-		String query = "INSERT INTO reportTB (idx, reportedNickname, reporterNickname, reason, reportDate) "
-				+ "VALUES ( ?,?,?,?,sysdate)";
+		String query = "INSERT INTO reportTB( "
+				+ " idx, boardName, reportedNickname ,reporterNickname , reason , reportDate , countReport ) "
+				+ " VALUES (?,?,?,?,?,sysdate , " + " ( SELECT NVL(COUNT(countReport)+1, 0) cnt"
+				+ " FROM reportTB WHERE idx = ? ))";
 
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setInt(1, dto.getIdx());
-			psmt.setString(2, dto.getReportedNickname());
-			psmt.setString(3, dto.getReporterNickname());
-			psmt.setString(4, dto.getReason());
+			psmt.setString(2, dto.getBoardName());
+			psmt.setString(3, dto.getReportedNickname());
+			psmt.setString(4, dto.getReporterNickname());
+			psmt.setString(5, dto.getReason());
+			psmt.setInt(6, dto.getIdx());
 			result = psmt.executeUpdate();
 
 			System.out.println(query);
@@ -59,28 +62,6 @@ public class ReportDAO extends DBConnPool {
 			e.printStackTrace();
 		}
 		return result;
-	}
-
-	// 한 회원을 한 번만 신고할 수 있게 하기
-	public boolean reporterIdxCheck(String reporterNickname, String reportedNickname) {
-		boolean check = false;
-		try {
-			String query = " SELECT * FROM reportTB WHERE reporterNickname=? AND reportedNickname =?";
-			psmt = con.prepareStatement(query);
-			psmt.setString(1, reporterNickname);
-			psmt.setString(2, reportedNickname);
-			rs = psmt.executeQuery();
-
-			check = rs.next();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("신고자 중복확인 오류");
-
-		} finally {
-			close();
-		}
-		return check;
 	}
 
 	// *************관리자*****************
@@ -101,16 +82,15 @@ public class ReportDAO extends DBConnPool {
 			psmt = con.prepareStatement(query);
 			stmt = con.createStatement();
 			rs = psmt.executeQuery();
-
 			while (rs.next()) {
-				ReportDAO dao = new ReportDAO();
 				ReportDTO dto = new ReportDTO();
 				dto.setIdx(rs.getInt(1));
-				dto.setReportedNickname(rs.getString(2));
-				dto.setReporterNickname(rs.getString(3));
-				dto.setReason(rs.getString(4));
-				dto.setReportDate(rs.getDate(5));
-				dto.setReportCount(dao.reportCount(dto.getIdx()));
+				dto.setBoardName(rs.getString(2));
+				dto.setReportedNickname(rs.getString(3));
+				dto.setReporterNickname(rs.getString(4));
+				dto.setReason(rs.getString(5));
+				dto.setReportDate(rs.getDate(6));
+				dto.setCountReport(rs.getInt(7));
 				reportList.add(dto);
 			}
 		} catch (Exception e) {
@@ -121,13 +101,14 @@ public class ReportDAO extends DBConnPool {
 	}
 
 	// 정지 내역 삭제
-	public int deleteReport(String reportedNickname, String reporterNickname) {
+	public int deleteReport(String reportedNickname, String reporterNickname, String reason) {
 		int result = 0;
-		String query = "DELETE FROM REPORTTB r WHERE reportedNickname=? AND reporterNickname =?";
+		String query = "DELETE FROM REPORTTB r WHERE reportedNickname=? AND reporterNickname =? AND reason=?";
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, reportedNickname);
 			psmt.setString(2, reporterNickname);
+			psmt.setString(3, reason);
 			result = psmt.executeUpdate();
 			rs = psmt.executeQuery();
 			System.out.println(query);
@@ -138,29 +119,6 @@ public class ReportDAO extends DBConnPool {
 			e.printStackTrace();
 		}
 		return result;
-	}
-
-//	
-	// 총 몇 번의 신고인지
-	public int reportCount(int idx) {
-		String query = "SELECT COUNT(*) FROM reportTB WHERE idx =?";
-		int totalCount = 0;
-
-		try {
-			psmt = con.prepareStatement(query);
-			psmt.setInt(1, idx);
-			rs = psmt.executeQuery();
-			System.out.println(query);
-
-			if (rs.next()) {
-				totalCount = rs.getInt(1);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("총 신고 수 조회 오류");
-		}
-
-		return totalCount; 
 	}
 
 }

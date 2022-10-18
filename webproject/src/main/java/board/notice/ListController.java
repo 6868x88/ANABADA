@@ -45,7 +45,6 @@ public class ListController extends HttpServlet {
 		if (pageTemp != null && !pageTemp.equals(""))
 			pageNum = Integer.parseInt(pageTemp);
 		
-//		int category=Integer.parseInt(req.getParameter("category"));
 		int start = (pageNum - 1) * pageSize + 1;
 		int end = pageNum * pageSize;
 		map.put("start", start);

@@ -18,12 +18,9 @@ dao.close();
 
 String session_nick = (String) session.getAttribute("Nickname");
 
-
 if (session_nick == null) {
 	session_nick = "null";
 }
-
-
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -196,94 +193,85 @@ if (session_nick == null) {
 
 
 	<!--하단(댓글)-->
-	<div style="margin: 12%;">
+   <div style="margin: 12%;">
 
-		<hr>
-		<div class="comment" id="comment">
-			<h3>
-				<b>댓글</b>
-			</h3>
-			<br>
-			<div class="comment-box">
-				<form name="commentFrm" method="post"
-					action="./CommentProcess/writeCommentProcess.jsp">
-					<input type="hidden" name="titleNum" value="${dto.exc_num}">
-					<input type="text" placeholder="댓글을 입력해주세요." class="comment-text"
-						name="content">
-					<button class="comment-btn" type="submit">등록</button>
-				</form>
-			</div>
+      <hr>
+      <div class="comment" id="comment">
+         <h3>
+            <b>댓글</b>
+         </h3>
+         <br>
+         <div class="comment-box">
+            <form name="commentFrm" method="post"
+               action="./CommentProcess/writeCommentProcess.jsp">
+               <input type="hidden" name="titleNum" value="${dto.exc_num}">
+               <input type="text" placeholder="댓글을 입력해주세요." class="comment-text"
+                  name="content">
+               <button class="comment-btn" type="submit">등록</button>
+            </form>
+         </div>
 
-			<ul style="margin: 15px; display: flex; flex-direction: column;">
-				<%
-				for (int i = 0; i < commentList.size(); i++) {
-				%>
-				<li>
-					<div class="dropup">
-						<div>
-							<ul style="float: left; width: 90%;">
-								<li class="comment-li"><%=commentList.get(i).getNickname()%></li>
-								<li class="comment-li"><%=commentList.get(i).getComm()%></li>
-								<li class="comment-li edit"><%=commentList.get(i).getComm_date()%></li>
-								<li class="comment-li edit">
-									<%
-									if (session_nick.equals(commentList.get(i).getNickname())) {
-									%>
+         <ul style="margin: 15px; display: flex; flex-direction: column;">
+            <%
+            for (int i = 0; i < commentList.size(); i++) {
+            %>
+            <li>
+               <div class="dropup">
+                  <div>
+                     <ul style="float: left; width: 90%;">
+                        <li class="comment-li"><%=commentList.get(i).getNickname()%></li>
+                        <li class="comment-li"><%=commentList.get(i).getComm()%></li>
+                        <li class="comment-li edit"><%=commentList.get(i).getComm_date()%></li>
+                        <li class="comment-li edit">
+                           <%
+                           if (session_nick.equals(commentList.get(i).getNickname())) {
+                           %>
 
-									<form name="commentFrm" method="post"
-										action="./CommentProcess/deleteCommentProcess.jsp">
-										<input type="hidden" name="titleNum" value="${dto.exc_num }">
-										<input type="hidden" name="comment"
-											value=<%=commentList.get(i).getComm()%>> <input
-											type="hidden" name="comm_num"
-											value="<%=commentList.get(i).getComm_num()%>">
-										<button class="button btnNormal" type="submit">삭제</button>
-									</form> <%
+                           <form name="commentFrm" method="post"
+                              action="./CommentProcess/deleteCommentProcess.jsp">
+                              <input type="hidden" name="titleNum" value="${dto.exc_num }">
+                              <input type="hidden" name="comment"
+                                 value=<%=commentList.get(i).getComm()%>> <input
+                                 type="hidden" name="comm_num"
+                                 value="<%=commentList.get(i).getComm_num()%>">
+                              <button class="button btnNormal" type="submit">삭제</button>
+                           </form> <%
  }
  %>
-								</li>
-							</ul>
-							<ul style="float: right;">
-								<li>
-									<button class="comment-li-more" type="button"
-										data-toggle="dropdown" id="dropdownBtn">
-										<img src="./img/more.svg">
-									</button>
-									
-									
-									<div class="dropdown-menu">
-										<form method="post" target="popwin" name="chatMessageFrm">
-											<%
-											for (int j = 0; j < commentList.size(); j++) {
-											%>
-											<input type="hidden" name="receive_idx" value=<%= commentList.get(j).getIdx()%>>
-											<input type="hidden" name="receive_nickname" value=<%= commentList.get(j).getNickname() %>>
-												 <a class="dropdown-item"
-												href="#"
-												onClick="
-												window.open('about:blank','popwin','width=550,height=750,resizable=no');
-											document.chatMessageFrm.action='./Chat.jsp?received_idx=<%=commentList.get(j).getIdx()%>';
-										 document.chatMessageFrm.submit();
-											">
-												쪽지보내기</a>
-											<%
-											}
-											%>
-											<a class="dropdown-item" href="#" data-toggle="modal"
-												data-target="#moaModal2">신고하기</a>
-										</form>
-									</div>
-								</li>
+                        </li>
+                     </ul>
+                     <ul style="float: right;">
+                        <li>
+                           <button class="comment-li-more" type="button"
+                              data-toggle="dropdown" id="dropdownBtn">
+                              <img src="./img/more.svg">
+                           </button>
+                           
+                           
+                           <div class="dropdown-menu">
+                              <form method="post" target="popwin" name="chatMessageFrm" action="./Chat.jsp?received_idx=<%=commentList.get(i).getIdx()%>" >
+                                 <input type="hidden" name="receive_idx" value=<%= commentList.get(i).getIdx()%>>
+                                 <input type="hidden" name="receive_nickname" value=<%= commentList.get(i).getNickname() %>>
+                                     <button type="submit" class="dropdown-item" onClick="
+                                    window.open('about:blank','popwin','width=550,height=750,resizable=no');">
+                                    쪽지보내기</button>
+                                 <a class="dropdown-item" href="#" data-toggle="modal"
+                                    data-target="#moaModal2">신고하기</a>
+                              </form>
+                           </div>
+                        </li>
 
-							</ul>
-						</div>
-					</div> <%
- }
- %>
-				</li>
-			</ul>
-		</div>
-	</div>
+                     </ul>
+                  </div>
+               </div> 
+               <% 
+               }
+               %>
+            </li>
+         </ul>
+      </div>
+   </div>
+
 
 
 
@@ -299,8 +287,10 @@ if (session_nick == null) {
 		for (int i = 0; i < commentList.size(); i++) {
 		%>
 		<input type="hidden" value="<%=commentList.get(i).getNickname()%>"
-			name="reportedNickname">
-			<input type="hidden" value="<%= commentList.get(i).getIdx() %>" name="idx">
+			name="reportedNickname"> <input type="hidden"
+			value="<%=commentList.get(i).getIdx()%>" name="idx"> <input
+			type="hidden" value="<%=commentList.get(i).getBoard_num()%>"
+			name="boardName">
 		<%
 		}
 		%>
@@ -318,8 +308,8 @@ if (session_nick == null) {
 						<h4>🚨 신고하기</h4>
 						<div>
 							<textarea style="width: 100%; height: 100px; resize: none;"
-								placeholder="신고 사유를 작성해주세요." id="reason"  name="reason"></textarea>
-								<div id="commentreasonError" class="error"></div>
+								placeholder="신고 사유를 작성해주세요." id="commentreason" name="reason" maxlength="200"></textarea>
+							<div id="commentreasonError" class="error" style="color: red;"></div>
 							<hr>
 						</div>
 						<div style="color: #bebebe;">
@@ -341,6 +331,7 @@ if (session_nick == null) {
 		onsubmit="return reportCheck()">
 		<input type="hidden" value="${dto.nickname}" name="reportedNickname">
 		<input type="hidden" value="${dto.idx }" name="idx">
+		<input type="hidden" value="${dto.board_num }" name="boardName">
 		<div class="modal fade" id="moaModal1" tabindex="-1" role="dialog"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog" role="document">
@@ -355,8 +346,8 @@ if (session_nick == null) {
 						<h4>🚨 신고하기</h4>
 						<div>
 							<textarea style="width: 100%; height: 100px; resize: none;"
-								placeholder="신고 사유를 작성해주세요."  id="reason" name="reason"></textarea>
-								<div id="reasonError" class="error"></div>
+								placeholder="신고 사유를 작성해주세요." id="reason" name="reason" maxlength="200"></textarea>
+							<div id="reasonError" class="error" style="color: red;"></div>
 							<hr>
 						</div>
 						<div style="color: #bebebe;">
@@ -382,46 +373,48 @@ if (session_nick == null) {
 		</span>
 		</a>
 	</div>
-	
-	
+
+
 	<script>
-	function reportCheck() {
-	      let reportReason = document.getElementById("reason").value;
+		function reportCheck() {
+			let reportReason = document.getElementById("reason").value;
 
-	      if (reason === "") {
-	         document.getElementById("reasonError").innerHTML = "신고 사유를 입력해주세요."
-	         return false;
-	      } else if (reportReason.length < 30) {
-	         document.getElementById("reasonError").innerHTML = "신고 사유가 너무 짧습니다. 최소 30자 이상으로 적어주세요."
-	         return false;
-	      } else if (reportReason.length > 200) {
-	         document.getElementById("reasonError").innerHTML = "200자 이내로 적어주세요."
-	         return false;
-	      } else {
-	         document.getElementById("reasonError").innerHTML = ""
-	      }
+			if (reportReason.length === "") {
+				document.getElementById("reasonError").innerHTML = "신고 사유를 입력해주세요."
+				return false;
+			} else if (reportReason.length < 30) {
+				document.getElementById("reasonError").innerHTML = "신고 사유가 너무 짧습니다. 최소 30자 이상으로 적어주세요."
+				return false;
+			} else if (reportReason.length > 200) {
+				document.getElementById("reasonError").innerHTML = "200자 이내로 적어주세요."
+				return false;
+			} else {
+				alert("신고 접수가 완료되었습니다.\n(중복된 신고는 접수되지 않습니다.)")
+				document.getElementById("reasonError").innerHTML = ""
+			}
 
-	   }
+		}
 	</script>
-	
+
 	<script>
-	function commentCheck() {
-	      let reportReason = document.getElementById("reason").value;
+		function commentCheck() {
+			let reportReason = document.getElementById("commentreason").value;
 
-	      if (reason === "") {
-	         document.getElementById("commentreasonError").innerHTML = "신고 사유를 입력해주세요."
-	         return false;
-	      } else if (reportReason.length < 30) {
-	         document.getElementById("commentreasonError").innerHTML = "신고 사유가 너무 짧습니다. 최소 30자 이상으로 적어주세요."
-	         return false;
-	      } else if (reportReason.length > 200) {
-	         document.getElementById("commentreasonError").innerHTML = "200자 이내로 적어주세요."
-	         return false;
-	      } else {
-	         document.getElementById("commentreasonError").innerHTML = ""
-	      }
+			if (reportReason.length === "") {
+				document.getElementById("commentreasonError").innerHTML = "신고 사유를 입력해주세요."
+				return false;
+			} else if (reportReason.length < 30) {
+				document.getElementById("commentreasonError").innerHTML = "신고 사유가 너무 짧습니다. 최소 30자 이상으로 적어주세요."
+				return false;
+			} else if (reportReason.length > 200) {
+				document.getElementById("commentreasonError").innerHTML = "200자 이내로 적어주세요."
+				return false;
+			} else {
+				alert("신고 접수가 완료되었습니다.\n(중복된 신고는 접수되지 않습니다.)")
+				document.getElementById("reasonError").innerHTML = ""
+			}
 
-	   }
+		}
 	</script>
 	<%@ include file="./HeaderFooter/Footer.jsp"%>
 </body>

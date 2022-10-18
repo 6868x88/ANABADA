@@ -25,8 +25,6 @@ public class NoticeBoardViewController extends HttpServlet{
 	dao.close();
 	
 	
-//	dto.setN_content(dto.getN_content().replaceAll("\r\n", "<br/>"));
-	
 	req.setAttribute("dto", dto);
 	req.getRequestDispatcher("/Page/NoticeBoard_read.jsp").forward(req, resp);
 	}

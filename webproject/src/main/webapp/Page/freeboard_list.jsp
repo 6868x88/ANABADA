@@ -52,7 +52,7 @@
 		<table class="table table-hover">
 			<tr align="center" style="background-color: #4C6D81;">
 				<th>번호</th>
-				<th style="width:40%">제목</th>
+				<th style="width:60%">제목</th>
 				<th>작성자</th>
 				<th>작성일</th>
 				<th>조회수</th>

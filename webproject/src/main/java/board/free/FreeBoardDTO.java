@@ -9,6 +9,7 @@ public class FreeBoardDTO {
 	private String free_contents;
 	private int free_count;
 	private String nickname;
+	private int board_num;
 	
 	public int getIdx() {
 		return idx;
@@ -51,6 +52,12 @@ public class FreeBoardDTO {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
+	}
+	public int getBoard_num() {
+		return board_num;
+	}
+	public void setBoard_num(int board_num) {
+		this.board_num = board_num;
 	}
 
 

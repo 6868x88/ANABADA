@@ -130,7 +130,7 @@ if (!loginId.equals("")) {
             <li><a href="./whoWeArePage.jsp">아나바다란?</a>
                <ol class="subDetailA">
                   <li><a href="./whoWeArePage.jsp">회사소개</a></li>
-                  <li><a href="#">개발자</a></li>
+                  <li><a href="./Introduce.jsp">개발자</a></li>
                </ol></li>
          </ul>
 

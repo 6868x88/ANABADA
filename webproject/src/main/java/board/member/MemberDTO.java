@@ -9,9 +9,7 @@ public class MemberDTO {
 	private String email;
 	private String phone_num;
 	private int report;
-	
-	
-	private int reportCount;
+	private int countReport;
 
 	public MemberDTO() {
 
@@ -81,12 +79,13 @@ public class MemberDTO {
 		this.report = report;
 	}
 
-	public int getReportCount() {
-		return reportCount;
+
+	public int getCountReport() {
+		return countReport;
 	}
 
-	public void setReportCount(int reportCount) {
-		this.reportCount = reportCount;
+	public void setCountReport(int countReport) {
+		this.countReport = countReport;
 	}
 
 }

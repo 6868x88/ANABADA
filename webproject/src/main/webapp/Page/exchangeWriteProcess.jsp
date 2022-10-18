@@ -9,16 +9,16 @@
 <%@ page import ="com.oreilly.servlet.multipart.DefaultFileRenamePolicy" %>
 <%
 request.setCharacterEncoding("UTF-8");
- 
+
 String user_id = (String) session.getAttribute("UserId");
 String nickname = (String) session.getAttribute("Nickname");
 int idx = (int) session.getAttribute("Idx");
 
 if (user_id == null) {
-  out.println("<script>alert('濡쒓렇�씤 �썑 �궗�슜二쇱꽭�슂.');혻location.href='exchangeListPage.do';</script>");
+  out.println("<script>alert('로그인 후 사용주세요.'); location.href='exchangeListPage.do';</script>");
   return;
 }
-//�씠誘몄� �뙆�씪 ���옣
+//이미지 파일 저장
 ServletContext context = request.getServletContext();
 String saveFolder ="./Page/img/excWriteImg";
 String realFolder = "";
@@ -47,7 +47,7 @@ File newFile = new File(realFolder + File.separator + new_img);
 oldFile.renameTo(newFile);
 
 
-//�긽�뭹 �긽�깭 �닽�옄 諛쏆븘�삤湲� 
+//상품 상태 숫자 받아오기 
 int condition_num = 0;
 if(condition.equals("new")){
 	condition_num = 1;
