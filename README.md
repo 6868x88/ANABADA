@@ -30,7 +30,7 @@ Java, Javascript, JSP, HTML, CSS를 이용하여 중고 거래 사이트를 제�
 ### 📁 ER 다이어그램
 ![Screenshot 2022-10-18 at 16 57 41](https://user-images.githubusercontent.com/107034832/196371477-dd1123d9-f6cb-4d22-9e76-823acfcbc630.JPG)
 
-### ⛓️팀원 구성
+### 🙌 팀원 구성
 - 강지은 https://github.com/6868x88
 (거래, 교환게시판, 후원 페이지, 쪽지 기능)
 - 송유진 https://github.com/IrisNamu
