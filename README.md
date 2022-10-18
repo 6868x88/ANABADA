@@ -29,9 +29,7 @@ Java, Javascript, JSP, HTML, CSS를 이용하여 중고 거래 사이트를 제�
 
 
 ### ⚙️ 개발환경
-- java jdk-8u331
-- oracle XE-21C
-- Apache Tomcat 9.0 (Server)
+![Screenshot 2022-10-18 at 16 56 34](https://user-images.githubusercontent.com/107034832/196370936-992d8e59-1cd4-4f0b-8ca3-aadf00811904.JPG)
 
 ### ⛓️팀원 구성
 - 강지은 https://github.com/6868x88
