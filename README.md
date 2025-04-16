@@ -15,7 +15,7 @@ Java, Javascript, JSP, HTML, CSS를 이용하여 중고 거래 사이트를 제�
 ```
 <br>
 👇 프로그램 개발 및 기능 설명은 아래 링크에서 확인하실 수 있습니다. 
-(https://github.com/youngee2/webproject/files/9835115/ANABADA_.pdf)
+(https://nbviewer.org/github/6868x88/ANABADA/blob/main/ANABADA.pdf)
 
 ***
 
